@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logoAsset from "@/assets/allan-logo.jpg.asset.json";
-import heroAsset from "@/assets/allan-hero.jpg.asset.json";
-import aboutAsset from "@/assets/allan-about.jpg.asset.json";
-import { Scale, Users, ShieldCheck, FileText, Mail, MessageCircle, Instagram, ChevronDown, Menu, Calendar, ClipboardCheck, Search, Handshake, Clock, ArrowRight, Save, RotateCcw, X as XIcon, PowerOff, Landmark, Gavel, Banknote, Building2, Globe2, Lock } from "lucide-react";
+import logoAsset from "@/assets/amorim-logo.png.asset.json";
+import heroAsset from "@/assets/amorim-hero.jpg.asset.json";
+import aboutAsset from "@/assets/amorim-about.jpg.asset.json";
+import { Scale, Users, ShieldCheck, FileText, Mail, MessageCircle, Instagram, ChevronDown, Menu, Calendar, ClipboardCheck, Search, Handshake, Clock, ArrowRight, Save, RotateCcw, X as XIcon, PowerOff, Landmark, Gavel, Phone, Building2, MapPin, Lock } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { buildWaUrl, getLogoOverride, getThemeOverride, applyThemeOverride, getSiteEnabled, snapshotContent, restoreContentSnapshot, clearContentOverrides, isAdminAuthed, onSiteEdit, loadPublishedSiteState, subscribeToPublishedSiteState, onSyncChange, type SyncState } from "@/lib/site-config";
 import { track, trackContact } from "@/lib/tracker";
@@ -15,10 +15,10 @@ const aboutImg = aboutAsset.url;
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Allan Ribeiro — Advocacia Bancária · Defesa do Devedor em todo o Brasil" },
-      { name: "description", content: "Advocacia especializada em Direito Bancário: defesa contra busca e apreensão, ações revisionais, juros abusivos e blindagem patrimonial. Atendimento 100% digital em todo o Brasil." },
-      { property: "og:title", content: "Allan Ribeiro · Advocacia Bancária" },
-      { property: "og:description", content: "Protegendo seu patrimônio contra abusos bancários e endividamento. Atendimento nacional." },
+      { title: "A. Amorim Advogados Associados — Direito de Família, Empresarial e Previdenciário · São Paulo" },
+      { name: "description", content: "Advocacia boutique em São Paulo especializada em Direito de Família, Empresarial e Previdenciário. Atendimento presencial no Brooklin e consultoria 100% digital para todo o Brasil." },
+      { property: "og:title", content: "A. Amorim · Advogados Associados" },
+      { property: "og:description", content: "Estratégia, transparência e excelência jurídica em São Paulo. Dr. Adriano Amorim." },
       { property: "og:type", content: "website" },
       { property: "og:image", content: heroAsset.url },
       { property: "twitter:image", content: heroAsset.url },
@@ -34,9 +34,18 @@ export const Route = createFileRoute("/")({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "LegalService",
-        name: "Allan Ribeiro Oliveira Advocacia (ARO Advogados)",
-        description: "Advocacia especializada em Direito Bancário · Defesa do Devedor com atuação em todo o Brasil",
-        email: "contato@aroadvogados.com.br",
+        name: "A. Amorim Advogados Associados",
+        description: "Advocacia boutique em São Paulo · Direito de Família, Empresarial e Previdenciário",
+        email: "contato@amorimadv.com.br",
+        telephone: "+551150523118",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Rua Laplace, 74 – Conjunto 113 · Condomínio Baker Square",
+          addressLocality: "São Paulo",
+          addressRegion: "SP",
+          postalCode: "04622-000",
+          addressCountry: "BR",
+        },
         areaServed: "BR",
         url: "/",
       }),
@@ -89,17 +98,17 @@ function Header() {
     { href: "#consultoria", label: "Consultoria" },
     { href: "#sobre", label: "Sobre" },
     { href: "#processo", label: "Como Funciona" },
-    { href: "#atendimento", label: "Atendimento" },
+    { href: "#localizacao", label: "Localização" },
     { href: "#faq", label: "FAQ" },
   ];
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/95 border-b-2 border-gold/30">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         <a href="#inicio" className="flex items-center gap-3">
-          <img src={logoUrl} alt="Allan Ribeiro Advocacia Bancária" className="h-12 w-12 object-contain rounded" width={48} height={48} />
+          <img src={logoUrl} alt="A. Amorim Advogados Associados" className="h-12 w-12 object-contain rounded bg-white/5" width={48} height={48} />
           <div className="hidden sm:block leading-tight">
-            <div className="font-serif text-base font-bold text-gold">Allan Ribeiro</div>
-            <div className="text-[11px] uppercase tracking-[0.18em] text-gold/80 font-semibold">Advocacia Bancária</div>
+            <div className="font-serif text-base font-bold text-gold">A. Amorim</div>
+            <div className="text-[11px] uppercase tracking-[0.18em] text-gold/80 font-semibold">Advogados Associados</div>
           </div>
         </a>
         <div className="flex items-center gap-3">
@@ -135,32 +144,32 @@ function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-28 grid lg:grid-cols-2 gap-12 items-center">
         <div className="animate-slide-left">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/15 border border-gold/40 text-xs uppercase tracking-[0.2em] mb-6 text-gold font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" /> Especialista em Direito Bancário
+            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" /> OAB/SP Ativo
           </div>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 text-white">
-            Protegendo seu <span className="text-gold">patrimônio</span> contra abusos bancários e endividamento.
+            Protegendo seus <span className="text-gold">direitos</span> com estratégia, transparência e excelência jurídica em São Paulo.
           </h1>
           <p className="text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
-            Advocacia especializada em Defesa do Devedor, Juros Abusivos e Blindagem de Bens, liderada pelo Dr. Allan Ribeiro.
+            Advocacia boutique especializada em Direito de Família, Empresarial e Previdenciário, liderada pelo Dr. Adriano Amorim.
           </p>
           <div className="flex flex-wrap gap-4">
             <CTA className="animate-pulse-cta" source="hero">
-              <MessageCircle className="w-5 h-5" /> Analisar Meu Caso no WhatsApp
+              <MessageCircle className="w-5 h-5" /> Agendar Consulta via WhatsApp
             </CTA>
             <a href="#areas" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md font-semibold text-sm border-2 border-gold/60 text-gold hover:bg-gold hover:text-gold-foreground transition-all">
               Áreas de Atuação
             </a>
           </div>
           <div className="mt-12 grid grid-cols-3 gap-6 text-sm text-white/85">
-            <div><div className="font-serif text-2xl text-gold font-bold">Brasil</div>atendimento nacional</div>
-            <div><div className="font-serif text-2xl text-gold font-bold">+1000</div>famílias defendidas</div>
-            <div><div className="font-serif text-2xl text-gold font-bold">100%</div>digital e seguro</div>
+            <div><div className="font-serif text-2xl text-gold font-bold">+15 anos</div>de experiência</div>
+            <div><div className="font-serif text-2xl text-gold font-bold">+1.200</div>casos concluídos</div>
+            <div><div className="font-serif text-2xl text-gold font-bold">98%</div>satisfação dos clientes</div>
           </div>
         </div>
         <div className="relative animate-slide-right">
           <div className="absolute -inset-4 bg-[var(--gradient-gold)] opacity-30 blur-2xl rounded-3xl animate-pulse" style={{ animationDuration: "4s" }} />
           <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)] border-4 border-gold/50 tilt-hover">
-            <img src={hero} alt="Identidade visual Allan Ribeiro Advogado" width={1280} height={853} className="w-full h-auto" />
+            <img src={hero} alt="Dr. Adriano Amorim — A. Amorim Advogados Associados" width={1280} height={853} className="w-full h-auto" />
           </div>
         </div>
       </div>
@@ -169,10 +178,9 @@ function Hero() {
 }
 
 const areas = [
-  { icon: ShieldCheck, title: "Defesa contra Busca e Apreensão", desc: "Intervenção rápida para proteger seu veículo ou maquinário das garras bancárias." },
-  { icon: FileText, title: "Ações Revisionais de Contratos", desc: "Análise minuciosa de financiamentos, cartões e empréstimos para eliminar juros abusivos." },
-  { icon: Gavel, title: "Defesa de Execuções e Penhoras", desc: "Blindagem patrimonial de contas, imóveis e salários contra bloqueios judiciais." },
-  { icon: Building2, title: "Passivo Bancário Empresarial", desc: "Renegociação estratégica de grandes dívidas (Capital de Giro, Conta Garantida) para salvar empresas." },
+  { icon: Users, title: "Direito de Família e Sucessões", desc: "Inventários, divórcios, planejamento sucessório, união estável e filiação socioafetiva com abordagem humanizada e sob medida." },
+  { icon: Building2, title: "Direito Empresarial", desc: "Assessoria jurídica corporativa completa, gestão de contratos, societário, compliance e defesa estratégica de negócios." },
+  { icon: ShieldCheck, title: "Direito Previdenciário", desc: "Planejamento previdenciário, pedidos e revisões de aposentadorias e concessão de benefícios junto ao INSS." },
 ];
 
 function Areas() {
@@ -181,10 +189,10 @@ function Areas() {
       <div className="max-w-7xl mx-auto px-6">
         <Reveal className="text-center max-w-2xl mx-auto mb-16">
           <div className="text-xs uppercase tracking-[0.25em] text-gold font-bold mb-3">O que resolvemos</div>
-          <h2 className="text-3xl md:text-4xl text-gold font-bold mb-4">Especialidades em Direito Bancário</h2>
-          <p className="text-foreground/85">Atendimento técnico, ágil e focado na proteção dos seus bens.</p>
+          <h2 className="text-3xl md:text-4xl text-gold font-bold mb-4">Áreas de Atuação</h2>
+          <p className="text-foreground/85">Atendimento técnico, estratégico e individualizado em cada especialidade.</p>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {areas.map((a, i) => (
             <Reveal key={a.title} delay={i * 90}>
               <div className="group h-full p-8 bg-card rounded-xl border-2 border-border glow-hover">
@@ -204,11 +212,11 @@ function Areas() {
 
 function Consultoria() {
   const steps = [
-    { icon: MessageCircle, title: "1. Primeiro Contato", desc: "Você envia uma mensagem detalhando sua dívida ou o processo que recebeu. Nosso time analisa os dados com sigilo absoluto." },
-    { icon: Search, title: "2. Análise Preliminar", desc: "Identificamos imediatamente se há risco de penhora, leilão ou busca e apreensão para agir com urgência." },
-    { icon: Calendar, title: "3. Consulta Online", desc: "Realizamos uma reunião digital para apresentar a estratégia exata de defesa e os direitos que o banco violou." },
-    { icon: ClipboardCheck, title: "4. Plano de Blindagem", desc: "Apresentamos proposta com honorários transparentes, formas de pagamento facilitadas e o plano para reduzir sua dívida." },
-    { icon: Handshake, title: "5. Ação Integrada", desc: "Assinamos o contrato digitalmente e nossa equipe assume as negociações ou defesas judiciais contra a instituição financeira." },
+    { icon: MessageCircle, title: "1. Primeiro Contato", desc: "Envie uma mensagem pelo WhatsApp ou e-mail descrevendo brevemente seu cenário ou a necessidade da sua empresa. Retornamos com total sigilo." },
+    { icon: Calendar, title: "2. Agendamento", desc: "Marcamos uma reunião presencial em nossa sede em São Paulo ou por videoconferência para clientes de todo o Brasil, no horário mais conveniente." },
+    { icon: Search, title: "3. Análise do Caso", desc: "Avaliamos minuciosamente seu histórico, analisamos a documentação apresentada e esclarecemos todas as suas dúvidas com clareza jurídica." },
+    { icon: ClipboardCheck, title: "4. Plano Jurídico", desc: "Desenhamos estratégias customizadas, prazos realistas e apresentamos uma proposta com honorários totalmente transparentes." },
+    { icon: Handshake, title: "5. Contratação", desc: "Formalizamos o contrato de prestação de serviços de forma segura. A partir daí, nossa equipe assume a condução com atualizações constantes do seu processo." },
   ];
   return (
     <section id="consultoria" className="py-24 bg-[var(--gradient-surface)]">
@@ -216,24 +224,24 @@ function Consultoria() {
         <Reveal className="text-center max-w-2xl mx-auto mb-12">
           <div className="text-xs uppercase tracking-[0.25em] text-gold font-bold mb-3">Consultoria Jurídica</div>
           <h2 className="text-3xl md:text-4xl text-gold font-bold mb-4">Como entrar em contato</h2>
-          <p className="text-foreground/85">Sabemos que lidar com dívidas e cobranças gera muita ansiedade. Explicamos exatamente o que acontece desde o primeiro contato — sem burocracia, sem juridiquês.</p>
+          <p className="text-foreground/85">Entendemos que procurar auxílio jurídico exige segurança. Explicamos exatamente o que acontece desde o primeiro contato — com clareza, transparência e sem burocracia.</p>
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-4 mb-10">
           <a href={buildWaUrl()} target="_blank" rel="noopener noreferrer" onClick={() => trackContact("consultoria-card-whatsapp")} className="p-6 bg-card rounded-xl border-2 border-border glow-hover group">
             <MessageCircle className="w-8 h-8 text-gold mb-3 group-hover:scale-110 transition-transform" />
             <div className="font-bold text-gold mb-1">WhatsApp</div>
-            <div className="text-sm text-foreground/85">Resposta imediata · fale agora com o Dr. Allan</div>
+            <div className="text-sm text-foreground/85">(11) 99538-2010 · Resposta rápida</div>
           </a>
-          <a href={buildWaUrl()} target="_blank" rel="noopener noreferrer" onClick={() => trackContact("consultoria-card-digital")} className="p-6 bg-card rounded-xl border-2 border-border glow-hover">
-            <Globe2 className="w-8 h-8 text-gold mb-3" />
-            <div className="font-bold text-gold mb-1">Atendimento Digital</div>
-            <div className="text-sm text-foreground/85">Videoconferências agendadas para todo o Brasil</div>
+          <a href="tel:+551150523118" onClick={() => track("Contact", { source: "consultoria-card-phone", channel: "phone" })} className="p-6 bg-card rounded-xl border-2 border-border glow-hover">
+            <Phone className="w-8 h-8 text-gold mb-3" />
+            <div className="font-bold text-gold mb-1">Telefone</div>
+            <div className="text-sm text-foreground/85">(11) 5052-3118 · Atendimento em horário comercial</div>
           </a>
-          <a href="mailto:contato@aroadvogados.com.br" onClick={() => track("Contact", { source: "consultoria-card-email", channel: "email" })} className="p-6 bg-card rounded-xl border-2 border-border glow-hover">
+          <a href="mailto:contato@amorimadv.com.br" onClick={() => track("Contact", { source: "consultoria-card-email", channel: "email" })} className="p-6 bg-card rounded-xl border-2 border-border glow-hover">
             <Mail className="w-8 h-8 text-gold mb-3" />
             <div className="font-bold text-gold mb-1">E-mail</div>
-            <div className="text-sm text-foreground/85">contato@aroadvogados.com.br</div>
+            <div className="text-sm text-foreground/85">contato@amorimadv.com.br</div>
           </a>
         </div>
 
@@ -243,7 +251,7 @@ function Consultoria() {
               <ArrowRight className="w-3.5 h-3.5" /> O que acontece em seguida
             </div>
             <p className="text-foreground/90 leading-relaxed">
-              Depois que você clica em um dos canais, iniciamos um processo ágil de <strong className="text-gold">5 passos</strong> para conter as ameaças do banco. Cada etapa garante transparência e respeito ao seu momento financeiro.
+              Depois que você escolhe um canal acima, seguimos um processo claro, ágil e estratégico de <strong className="text-gold">5 passos</strong>. Cada etapa garante sigilo, ética e foco total no seu resultado — sem burocracia.
             </p>
           </div>
         </Reveal>
@@ -264,7 +272,7 @@ function Consultoria() {
         </div>
 
         <div className="mt-12 text-center">
-          <CTA source="consultoria-bottom"><MessageCircle className="w-4 h-4" /> Quero falar com o especialista</CTA>
+          <CTA source="consultoria-bottom"><MessageCircle className="w-4 h-4" /> Quero falar com um especialista</CTA>
         </div>
       </div>
     </section>
@@ -277,40 +285,40 @@ function About() {
       <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-5 gap-12 items-center">
         <Reveal className="lg:col-span-2 relative">
           <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)] border-4 border-gold/30 tilt-hover">
-            <img src={aboutImg} alt="Dr. Allan Ribeiro — Advogado especialista em Direito Bancário" loading="lazy" width={800} height={1000} className="w-full h-full object-cover" />
+            <img src={aboutImg} alt="Dr. Adriano Amorim — A. Amorim Advogados Associados" loading="lazy" width={800} height={1000} className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-[var(--gradient-gold)] text-gold-foreground px-6 py-4 rounded-xl shadow-lg hidden md:block animate-pop-in">
-            <div className="font-serif text-xl font-bold">Defesa do</div>
-            <div className="text-sm font-bold">Devedor</div>
+            <div className="font-serif text-xl font-bold">OAB/SP</div>
+            <div className="text-sm font-bold">Ativo</div>
           </div>
         </Reveal>
         <Reveal delay={120} className="lg:col-span-3">
           <div className="text-xs uppercase tracking-[0.25em] text-gold font-bold mb-3">Quem somos</div>
-          <h2 className="text-3xl md:text-4xl text-gold font-bold mb-6">Combate à Abusividade Bancária com Abrangência Nacional.</h2>
+          <h2 className="text-3xl md:text-4xl text-gold font-bold mb-6">Expertise Multidisciplinar e Compromisso com Resultados.</h2>
           <p className="text-foreground/90 leading-relaxed mb-5">
-            O escritório liderado pelo <strong className="text-gold">Dr. Allan Ribeiro</strong> atua de forma focada no Direito Bancário, unindo tecnologia de ponta e conhecimento técnico para enfrentar grandes instituições financeiras de igual para igual. Através de um modelo de <strong className="text-gold">Advocacia Digital</strong>, o escritório derruba fronteiras geográficas para defender o patrimônio de pessoas físicas e empresas em qualquer tribunal do país.
+            O escritório <strong className="text-gold">A. Amorim Advogados Associados</strong> é uma banca boutique estruturada para oferecer assessoria jurídica de alta performance. Fundado pelo <strong className="text-gold">Dr. Adriano Amorim</strong>, o escritório consolidou sua história unindo rigor técnico à proximidade com o cliente.
           </p>
           <p className="text-foreground/85 leading-relaxed mb-8">
-            Atuação pautada pela combatividade e pela ética inegociável — tratando cada caso com a urgência exigida por quem sofre com cobranças abusivas.
+            Atendemos de forma personalizada tanto demandas complexas de pessoas físicas quanto os interesses estratégicos de corporações, operando com total transparência e foco em soluções definitivas.
           </p>
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="p-4 bg-secondary rounded-lg border border-gold/30 glow-hover">
-              <Globe2 className="w-5 h-5 text-gold mb-2" />
-              <div className="text-xs text-foreground/80">Abrangência</div>
-              <div className="font-bold text-gold text-sm">Atuação Nacional</div>
+              <Scale className="w-5 h-5 text-gold mb-2" />
+              <div className="text-xs text-foreground/80">Regulamentação</div>
+              <div className="font-bold text-gold text-sm">OAB/SP</div>
+            </div>
+            <div className="p-4 bg-secondary rounded-lg border border-gold/30 glow-hover">
+              <Clock className="w-5 h-5 text-gold mb-2" />
+              <div className="text-xs text-foreground/80">Experiência</div>
+              <div className="font-bold text-gold text-sm">+15 anos</div>
             </div>
             <div className="p-4 bg-secondary rounded-lg border border-gold/30 glow-hover">
               <Landmark className="w-5 h-5 text-gold mb-2" />
-              <div className="text-xs text-foreground/80">Foco</div>
-              <div className="font-bold text-gold text-sm">Direito Bancário</div>
-            </div>
-            <div className="p-4 bg-secondary rounded-lg border border-gold/30 glow-hover">
-              <Globe2 className="w-5 h-5 text-gold mb-2" />
-              <div className="text-xs text-foreground/80">Modelo</div>
-              <div className="font-bold text-gold text-sm">100% Digital</div>
+              <div className="text-xs text-foreground/80">Atendimento</div>
+              <div className="font-bold text-gold text-sm">Nacional</div>
             </div>
           </div>
-          <CTA source="about"><MessageCircle className="w-4 h-4" /> Proteger meu patrimônio hoje</CTA>
+          <CTA source="about"><MessageCircle className="w-4 h-4" /> Quero falar com o especialista</CTA>
         </Reveal>
       </div>
     </section>
@@ -319,10 +327,10 @@ function About() {
 
 function Differentials() {
   const items = [
-    { icon: Clock, title: "Urgência Bancária", desc: "Prazos contra bancos são vitais; respondemos rápido." },
-    { icon: Lock, title: "Sigilo Bancário e Jurídico", desc: "Suas informações corporativas ou pessoais totalmente protegidas." },
-    { icon: Banknote, title: "Cálculos Especializados", desc: "Análise matemática real para provar juros e taxas abusivas no tribunal." },
-    { icon: Users, title: "Atendimento Descomplicado", desc: "Explicamos suas chances reais sem falsas promessas ou termos difíceis." },
+    { icon: Users, title: "Atenção Singular", desc: "Cada cliente recebe uma estratégia desenhada sob medida para o seu caso." },
+    { icon: Lock, title: "Sigilo e Confiança", desc: "Proteção absoluta de dados e informações patrimoniais ou empresariais." },
+    { icon: FileText, title: "Honorários Transparentes", desc: "Alinhamento claro de custos desde a contratação, sem surpresas futuras." },
+    { icon: Clock, title: "Sem Burocracia", desc: "Resolução focada na agilidade, clareza e eficiência jurídica." },
   ];
   return (
     <section className="py-20 bg-[var(--gradient-primary)] text-white relative overflow-hidden">
@@ -330,8 +338,8 @@ function Differentials() {
       <div className="relative max-w-6xl mx-auto px-6">
         <Reveal className="text-center mb-12">
           <Scale className="w-12 h-12 text-gold mx-auto mb-4 animate-pop-in" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Por que escolher nossa advocacia bancária</h2>
-          <p className="text-white/90">Consultoria digital ágil e segura para clientes em todo o território nacional.</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Por que escolher nosso escritório</h2>
+          <p className="text-white/90">Atendimento presencial na capital paulista e consultoria 100% digital estruturada para todo o Brasil.</p>
         </Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {items.map((it, i) => (
@@ -346,8 +354,8 @@ function Differentials() {
         </div>
         <div className="mt-10 text-center">
           <div className="inline-block px-8 py-4 rounded-lg border-2 border-gold/40 bg-white/5 text-sm">
-            <div className="text-gold font-bold mb-1">Allan Ribeiro Oliveira Advocacia</div>
-            <div className="text-white/85">ARO Advogados · Direito Bancário com atuação nacional</div>
+            <div className="text-gold font-bold mb-1">A. Amorim Advogados Associados</div>
+            <div className="text-white/85">CNPJ 23.256.957/0001-07</div>
           </div>
         </div>
       </div>
@@ -355,46 +363,49 @@ function Differentials() {
   );
 }
 
-function Atendimento() {
+function Localizacao() {
   return (
-    <section id="atendimento" className="py-24 bg-background">
+    <section id="localizacao" className="py-24 bg-background">
       <div className="max-w-6xl mx-auto px-6">
         <Reveal className="text-center max-w-2xl mx-auto mb-12">
-          <div className="text-xs uppercase tracking-[0.25em] text-gold font-bold mb-3">Onde atendemos</div>
-          <h2 className="text-3xl md:text-4xl text-gold font-bold mb-4">Escritório Digital de Alta Performance</h2>
-          <p className="text-foreground/85">Sem filas, sem deslocamentos. Sua defesa contratada, assinada e protocolada do conforto da sua casa ou empresa.</p>
+          <div className="text-xs uppercase tracking-[0.25em] text-gold font-bold mb-3">Onde estamos</div>
+          <h2 className="text-3xl md:text-4xl text-gold font-bold mb-4">Sede do Escritório</h2>
+          <p className="text-foreground/85">Atendimento em ambiente corporativo moderno na Zona Sul de São Paulo, de fácil acesso e com estacionamento no local.</p>
         </Reveal>
         <div className="grid lg:grid-cols-5 gap-8">
           <Reveal className="lg:col-span-2 space-y-5">
             <div className="p-6 bg-card rounded-xl border-2 border-gold/30 glow-hover">
-              <Globe2 className="w-7 h-7 text-gold mb-3" />
-              <div className="font-bold text-gold mb-2">Abrangência Nacional</div>
+              <MapPin className="w-7 h-7 text-gold mb-3" />
+              <div className="font-bold text-gold mb-2">Endereço Comercial</div>
               <p className="text-sm text-foreground/90 leading-relaxed">
-                Atendimento em todos os estados do Brasil via tribunais eletrônicos (PJe, e-SAJ, Projudi).
+                Rua Laplace, 74 – Conjunto 113<br />
+                Condomínio Baker Square<br />
+                Brooklin Paulista, São Paulo - SP<br />
+                CEP 04622-000
               </p>
             </div>
             <div className="p-6 bg-card rounded-xl border-2 border-border glow-hover">
               <Clock className="w-7 h-7 text-gold mb-3" />
               <div className="font-bold text-gold mb-2">Horário de Atendimento</div>
               <p className="text-sm text-foreground/90 leading-relaxed">
-                Segunda a Sexta · 08h00 às 18h00 (Horário de Brasília)<br />
-                <span className="text-xs text-foreground/70">Atendimentos urgentes em regime especial.</span>
+                Segunda a Sexta · 09h00 às 18h00<br />
+                <span className="text-xs text-foreground/70">Reuniões com hora marcada.</span>
               </p>
             </div>
-            <CTA className="w-full" source="atendimento"><MessageCircle className="w-4 h-4" /> Agendar análise contratual</CTA>
+            <CTA className="w-full" source="localizacao"><MessageCircle className="w-4 h-4" /> Agendar visita presencial</CTA>
           </Reveal>
           <Reveal delay={120} className="lg:col-span-3">
-            <div className="rounded-xl overflow-hidden border-4 border-gold/30 shadow-[var(--shadow-elegant)] min-h-[400px] bg-[var(--gradient-primary)] flex items-center justify-center p-10">
-              <div className="text-center">
-                <Globe2 className="w-24 h-24 text-gold mx-auto mb-6 animate-pop-in" />
-                <div className="text-2xl font-serif font-bold text-gold mb-2">Brasil Inteiro</div>
-                <p className="text-white/85 text-sm max-w-sm mx-auto leading-relaxed">
-                  Conectados a todos os tribunais do país. Onde houver banco cobrando, nossa defesa chega.
-                </p>
-                <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold/40 text-xs text-gold uppercase tracking-[0.2em] font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" /> Tribunais eletrônicos integrados
-                </div>
-              </div>
+            <div className="rounded-xl overflow-hidden border-4 border-gold/30 shadow-[var(--shadow-elegant)] min-h-[400px]">
+              <iframe
+                title="Mapa - A. Amorim Advogados Associados"
+                src="https://www.google.com/maps?q=Rua+Laplace,+74+Brooklin+Paulista,+S%C3%A3o+Paulo&output=embed"
+                width="100%"
+                height="100%"
+                style={{ minHeight: 400, border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </Reveal>
         </div>
@@ -404,12 +415,12 @@ function Atendimento() {
 }
 
 const faqs = [
-  { q: "Como funciona o atendimento online?", a: "É extremamente simples e seguro. Fazemos reuniões por vídeo e você nos envia fotos ou PDFs dos contratos pelo WhatsApp. Protocolamos sua defesa direto no sistema eletrônico do juiz de qualquer lugar do país." },
-  { q: "O banco pode tomar meu único veículo ou minha casa?", a: "Bancos utilizam forte pressão, mas a lei protege bens essenciais como ferramentas de trabalho e o bem de família. Avaliamos seu caso para criar uma barreira jurídica de proteção imediatamente." },
-  { q: "O que são juros abusivos e como identificá-los?", a: "São taxas cobradas acima da média de mercado estipulada pelo Banco Central. Fazemos um cálculo pericial no seu contrato para descobrir se você está pagando o dobro do que deveria." },
-  { q: "Recebi uma intimação judicial de cobrança, o que fazer?", a: "O prazo para defesa costuma ser curto (muitas vezes de apenas 15 dias). Não ignore a notificação, pois a falta de resposta dá o direito ao banco de bloquear suas contas de forma imediata." },
-  { q: "Quanto custa para analisar meu contrato?", a: "O contato inicial para entender a sua situação e verificar a viabilidade da defesa é rápido. Se houver direito a ser defendido, estruturamos os honorários de forma justa." },
-  { q: "Vocês limpam o nome do SPC/Serasa?", a: "Nosso foco é a revisão da dívida e a defesa judicial. Em muitos casos, ao contestarmos a legalidade da cobrança em juízo, conseguimos liminares para suspender a negativação do seu nome." },
+  { q: "Como funciona o atendimento online?", a: "Realizamos reuniões por vídeo (Google Meet, Zoom ou WhatsApp). A análise e o envio de documentos ocorrem de forma digital e totalmente segura, atendendo clientes em qualquer lugar do Brasil com a mesma excelência do presencial." },
+  { q: "Onde o escritório está localizado?", a: "Nossa sede fica no Brooklin Paulista, em São Paulo - SP. Também possuímos unidade de atendimento na Vila Gertrudes e prestamos assessoria remota para demandas de outras regiões." },
+  { q: "Quais documentos preciso para dar início ao meu caso?", a: "Para Direito de Família ou Previdenciário, documentos pessoais (RG/CPF) e comprovantes específicos do caso. Para o Empresarial, o contrato social da empresa. Fornecemos um checklist exato logo após a primeira consulta." },
+  { q: "Como são definidos os honorários?", a: "Os valores são calculados com base na complexidade e nos objetivos da demanda, seguindo rigorosamente os parâmetros da OAB/SP. Apresentamos propostas transparentes e com facilidades de pagamento adequadas a cada perfil." },
+  { q: "Qual é o tempo de resposta do escritório?", a: "Nossos canais de atendimento retornam contatos de forma ágil, priorizando urgências empresariais ou familiares imediatamente dentro do horário comercial." },
+  { q: "Vocês atendem pelo convênio da assistência judiciária gratuita da OAB?", a: "Não. Como um escritório boutique focado em atendimento corporativo e especializado de alta performance, nossas consultas e atuações são estritamente particulares." },
 ];
 
 function FAQ() {
@@ -437,7 +448,7 @@ function FAQ() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <CTA source="faq"><MessageCircle className="w-4 h-4" /> Falar com um advogado bancário</CTA>
+          <CTA source="faq"><MessageCircle className="w-4 h-4" /> Consultar disponibilidade</CTA>
         </div>
       </div>
     </section>
@@ -456,47 +467,51 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 mb-12">
         <div>
           <div className="flex items-center gap-3 mb-5">
-            <img src={logoUrl} alt="Logo" className="h-14 w-14 object-contain rounded" loading="lazy" width={56} height={56} />
+            <img src={logoUrl} alt="Logo" className="h-14 w-14 object-contain rounded bg-white/5" loading="lazy" width={56} height={56} />
             <div>
-              <div className="font-serif text-lg font-bold text-white">Allan Ribeiro</div>
-              <div className="text-xs uppercase tracking-[0.18em] text-gold font-bold">Advocacia Bancária</div>
+              <div className="font-serif text-lg font-bold text-white">A. Amorim</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-gold font-bold">Advogados Associados</div>
             </div>
           </div>
           <p className="text-sm text-white/85 leading-relaxed">
-            Allan Ribeiro Oliveira Advocacia (ARO Advogados)<br />
-            Atendimento Digital em Todo o Brasil
+            A. Amorim Advogados Associados<br />
+            OAB/SP Regulamentada · CNPJ 23.256.957/0001-07
           </p>
         </div>
         <div>
-          <h4 className="font-serif text-gold font-bold mb-4">Atendimento</h4>
+          <h4 className="font-serif text-gold font-bold mb-4">Endereço</h4>
           <div className="space-y-3 text-sm text-white/85">
             <div className="flex gap-3">
-              <Globe2 className="w-4 h-4 text-gold flex-shrink-0 mt-1" />
-              <div><strong className="text-white">Nacional:</strong> Atuação digital unificada em todos os estados do Brasil</div>
-            </div>
-            <div className="flex gap-3">
-              <Clock className="w-4 h-4 text-gold flex-shrink-0 mt-1" />
-              <div><strong className="text-white">Horário:</strong> Seg a Sex · 08h às 18h (Brasília)</div>
+              <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-1" />
+              <div>
+                Rua Laplace, 74 – Conjunto 113<br />
+                Condomínio Baker Square<br />
+                Brooklin Paulista, São Paulo - SP<br />
+                CEP 04622-000
+              </div>
             </div>
           </div>
         </div>
         <div>
           <h4 className="font-serif text-gold font-bold mb-4">Contato</h4>
           <div className="space-y-3 text-sm">
+            <a href="tel:+551150523118" onClick={() => track("Contact", { source: "footer-phone", channel: "phone" })} className="flex items-center gap-3 text-white/90 hover:text-gold transition-colors">
+              <Phone className="w-4 h-4 text-gold" /> (11) 5052-3118
+            </a>
             <a href={buildWaUrl()} target="_blank" rel="noopener noreferrer" onClick={() => trackContact("footer-wa")} className="flex items-center gap-3 text-white/90 hover:text-gold transition-colors">
-              <MessageCircle className="w-4 h-4 text-gold" /> WhatsApp · Falar com o Dr. Allan
+              <MessageCircle className="w-4 h-4 text-gold" /> WhatsApp (11) 99538-2010
             </a>
-            <a href="mailto:contato@aroadvogados.com.br" onClick={() => track("Contact", { source: "footer", channel: "email" })} className="flex items-center gap-3 text-white/90 hover:text-gold transition-colors">
-              <Mail className="w-4 h-4 text-gold" />contato@aroadvogados.com.br
+            <a href="mailto:contato@amorimadv.com.br" onClick={() => track("Contact", { source: "footer", channel: "email" })} className="flex items-center gap-3 text-white/90 hover:text-gold transition-colors">
+              <Mail className="w-4 h-4 text-gold" />contato@amorimadv.com.br
             </a>
-            <a href="https://instagram.com/allanribeiro.adv" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-md border-2 border-gold/40 text-white hover:bg-gold hover:text-gold-foreground transition-colors">
-              <Instagram className="w-4 h-4" /> @allanribeiro.adv
+            <a href="https://instagram.com/a.amorimadv" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-md border-2 border-gold/40 text-white hover:bg-gold hover:text-gold-foreground transition-colors">
+              <Instagram className="w-4 h-4" /> @a.amorimadv
             </a>
           </div>
         </div>
       </div>
       <div className="border-t border-white/15 pt-6 text-center text-xs text-white/60">
-        © {new Date().getFullYear()} Allan Ribeiro Advocacia Bancária. Todos os direitos reservados.
+        © {new Date().getFullYear()} A. Amorim Advogados Associados. Todos os direitos reservados.
       </div>
     </footer>
   );
@@ -624,29 +639,14 @@ function Index() {
     };
     const offEdit = onSiteEdit(() => reapply());
     const offDb = subscribeToPublishedSiteState(reapply);
-    const mo = new MutationObserver(reapply);
-    mo.observe(document.body, { childList: true, subtree: true, characterData: true });
-    return () => {
-      offEdit();
-      offDb();
-      mo.disconnect();
-      if (rafId !== null) cancelAnimationFrame(rafId);
-    };
+    return () => { offEdit(); offDb(); };
   }, []);
 
-  const exitEdit = () => {
-    disableInlineEdit();
-    setEditing(false);
-    const u = new URL(window.location.href);
-    u.searchParams.delete("edit");
-    window.history.replaceState({}, "", u.toString());
-  };
-
-  if (!enabled && !isAdminAuthed()) return <OfflinePage />;
+  if (!enabled && !editing) return <OfflinePage />;
 
   return (
-    <div className="min-h-screen">
-      {editing && <EditBar onExit={exitEdit} />}
+    <div className="min-h-screen bg-background">
+      {editing && <EditBar onExit={() => { disableInlineEdit(); setEditing(false); }} />}
       <Header />
       <main>
         <Hero />
@@ -654,7 +654,7 @@ function Index() {
         <Consultoria />
         <About />
         <Differentials />
-        <Atendimento />
+        <Localizacao />
         <FAQ />
       </main>
       <Footer />
