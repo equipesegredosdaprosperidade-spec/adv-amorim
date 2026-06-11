@@ -14,7 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      site_published_state: {
+        Row: {
+          content_overrides: Json
+          created_at: string
+          image_overrides: Json
+          logo_dataurl: string | null
+          pixel_config: Json
+          published_at: string
+          singleton_key: string
+          site_enabled: boolean
+          theme_override: Json | null
+          updated_at: string
+          version: number
+          whatsapp_message: string | null
+          whatsapp_number: string | null
+        }
+        Insert: {
+          content_overrides?: Json
+          created_at?: string
+          image_overrides?: Json
+          logo_dataurl?: string | null
+          pixel_config?: Json
+          published_at?: string
+          singleton_key?: string
+          site_enabled?: boolean
+          theme_override?: Json | null
+          updated_at?: string
+          version?: number
+          whatsapp_message?: string | null
+          whatsapp_number?: string | null
+        }
+        Update: {
+          content_overrides?: Json
+          created_at?: string
+          image_overrides?: Json
+          logo_dataurl?: string | null
+          pixel_config?: Json
+          published_at?: string
+          singleton_key?: string
+          site_enabled?: boolean
+          theme_override?: Json | null
+          updated_at?: string
+          version?: number
+          whatsapp_message?: string | null
+          whatsapp_number?: string | null
+        }
+        Relationships: []
+      }
+      site_version_history: {
+        Row: {
+          content_overrides: Json
+          created_at: string
+          id: string
+          image_overrides: Json
+          label: string | null
+          logo_dataurl: string | null
+          pixel_config: Json
+          site_enabled: boolean
+          theme_override: Json | null
+          version: number
+          whatsapp_message: string | null
+          whatsapp_number: string | null
+        }
+        Insert: {
+          content_overrides?: Json
+          created_at?: string
+          id?: string
+          image_overrides?: Json
+          label?: string | null
+          logo_dataurl?: string | null
+          pixel_config?: Json
+          site_enabled?: boolean
+          theme_override?: Json | null
+          version: number
+          whatsapp_message?: string | null
+          whatsapp_number?: string | null
+        }
+        Update: {
+          content_overrides?: Json
+          created_at?: string
+          id?: string
+          image_overrides?: Json
+          label?: string | null
+          logo_dataurl?: string | null
+          pixel_config?: Json
+          site_enabled?: boolean
+          theme_override?: Json | null
+          version?: number
+          whatsapp_message?: string | null
+          whatsapp_number?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
