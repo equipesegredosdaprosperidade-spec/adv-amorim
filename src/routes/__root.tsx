@@ -78,12 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "A. Amorim Advogados Associados — São Paulo" },
       { name: "description", content: "Advocacia boutique em São Paulo especializada em Direito de Família, Empresarial e Previdenciário. Liderada pelo Dr. Adriano Amorim." },
       { name: "author", content: "A. Amorim Advogados Associados" },
-      { property: "og:title", content: "A. Amorim Advogados Associados" },
-      { property: "og:description", content: "Estratégia, transparência e excelência jurídica em São Paulo." },
+      { property: "og:title", content: "A. Amorim Advogados Associados — São Paulo" },
+      { property: "og:description", content: "Advocacia boutique em São Paulo especializada em Direito de Família, Empresarial e Previdenciário. Liderada pelo Dr. Adriano Amorim." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "A. Amorim Advogados Associados" },
-      { name: "twitter:description", content: "Estratégia, transparência e excelência jurídica em São Paulo." },
+      { name: "twitter:title", content: "A. Amorim Advogados Associados — São Paulo" },
+      { name: "twitter:description", content: "Advocacia boutique em São Paulo especializada em Direito de Família, Empresarial e Previdenciário. Liderada pelo Dr. Adriano Amorim." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b86f405-35e2-4a2d-9c2f-35045c7ee738/id-preview-ff8edf8b--1793d9a8-62e0-407e-bbd4-dc112a329df2.lovable.app-1781158927097.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b86f405-35e2-4a2d-9c2f-35045c7ee738/id-preview-ff8edf8b--1793d9a8-62e0-407e-bbd4-dc112a329df2.lovable.app-1781158927097.png" },
     ],
     links: [
       {
