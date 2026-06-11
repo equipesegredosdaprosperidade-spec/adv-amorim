@@ -40,8 +40,8 @@ const IMAGE_KEY = "site_image_overrides";
 const TEXT_PAIRS_KEY = "site_text_pairs";
 
 
-export const DEFAULT_WA = "5516993393313";
-export const DEFAULT_MSG = "Olá, gostaria de agendar uma consulta.";
+export const DEFAULT_WA = "5511995382010";
+export const DEFAULT_MSG = "Olá, gostaria de agendar uma consulta com a A. Amorim Advogados Associados.";
 export type PublishedSiteState = {
   contentOverrides: ContentMap;
   imageOverrides: ImageMap;
