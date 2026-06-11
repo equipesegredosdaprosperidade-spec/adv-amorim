@@ -9,8 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as DbtestRouteImport } from './routes/dbtest'
+import { Route as AdmindevRouteImport } from './routes/admindev'
 import { Route as IndexRouteImport } from './routes/index'
 
+const DbtestRoute = DbtestRouteImport.update({
+  id: '/dbtest',
+  path: '/dbtest',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmindevRoute = AdmindevRouteImport.update({
+  id: '/admindev',
+  path: '/admindev',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +31,50 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admindev': typeof AdmindevRoute
+  '/dbtest': typeof DbtestRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admindev': typeof AdmindevRoute
+  '/dbtest': typeof DbtestRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admindev': typeof AdmindevRoute
+  '/dbtest': typeof DbtestRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/admindev' | '/dbtest'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/admindev' | '/dbtest'
+  id: '__root__' | '/' | '/admindev' | '/dbtest'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdmindevRoute: typeof AdmindevRoute
+  DbtestRoute: typeof DbtestRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/dbtest': {
+      id: '/dbtest'
+      path: '/dbtest'
+      fullPath: '/dbtest'
+      preLoaderRoute: typeof DbtestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admindev': {
+      id: '/admindev'
+      path: '/admindev'
+      fullPath: '/admindev'
+      preLoaderRoute: typeof AdmindevRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +87,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdmindevRoute: AdmindevRoute,
+  DbtestRoute: DbtestRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
